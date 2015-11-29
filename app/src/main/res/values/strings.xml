@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AskMeAnything</string>
+    <string name="convo_activity">Conversations</string>
 </resources>

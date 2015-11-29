@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onButtonTap(View v) {
-        Intent beginApp = new Intent(this, QuestionActivity.class);
+        Intent beginApp = new Intent(this, ConvoActivity.class);
         startActivity(beginApp);
     }
 }
