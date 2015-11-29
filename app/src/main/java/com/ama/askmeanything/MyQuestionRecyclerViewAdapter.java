@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class MyQuestionRecyclerViewAdapter extends RecyclerView.Adapter<MyQuestionRecyclerViewAdapter.ViewHolder> {
 
-    private final List<ConvoContent> mValues;
+    private final List<Convo> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyQuestionRecyclerViewAdapter(List<ConvoContent> items, OnListFragmentInteractionListener listener) {
+    public MyQuestionRecyclerViewAdapter(List<Convo> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,7 +29,7 @@ public class MyQuestionRecyclerViewAdapter extends RecyclerView.Adapter<MyQuesti
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+                .inflate(R.layout.fragment_question, parent, false);
         return new ViewHolder(view);
     }
 
@@ -60,7 +60,7 @@ public class MyQuestionRecyclerViewAdapter extends RecyclerView.Adapter<MyQuesti
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public ConvoContent mItem;
+        public Convo mItem;
 
         public ViewHolder(View view) {
             super(view);

@@ -20,10 +20,11 @@ import com.ama.askmeanything.ConvoContent.Convo;
  * interface.
  */
 public class ResponseFragment extends Fragment {
+    OnListFragmentInteractionListener mCallback;
 
     // TODO: Customize parameter argument names
     //
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_COLUMN_COUNT = "1";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -33,6 +34,11 @@ public class ResponseFragment extends Fragment {
      * fragment (e.g. upon screen orientation changes).
      */
     public ResponseFragment() {
+    }
+
+    public static ResponseFragment newInstance() {
+        ResponseFragment fragment = new ResponseFragment();
+        return fragment;
     }
 
     // TODO: Customize parameter initialization
@@ -77,12 +83,7 @@ public class ResponseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
+        mCallback = (OnListFragmentInteractionListener) context;
     }
 
     @Override
@@ -103,6 +104,6 @@ public class ResponseFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(ConvoContent item);
+        void onListFragmentInteraction(Convo item);
     }
 }

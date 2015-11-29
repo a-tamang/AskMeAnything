@@ -1,6 +1,7 @@
 package com.ama.askmeanything;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,17 +14,19 @@ import android.view.ViewGroup;
 import com.ama.askmeanything.ConvoContent;
 import com.ama.askmeanything.ConvoContent.Convo;
 
+import java.util.List;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class QuestionFragment extends Fragment {
+public class CompletedFragment extends Fragment {
     OnListFragmentInteractionListener mCallback;
 
     // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "0";
+    private static final String ARG_COLUMN_COUNT = "2";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -32,18 +35,18 @@ public class QuestionFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public QuestionFragment() {
+    public CompletedFragment() {
     }
 
-    public static QuestionFragment newInstance() {
-        QuestionFragment fragment = new QuestionFragment();
+    public static CompletedFragment newInstance() {
+        CompletedFragment fragment = new CompletedFragment();
         return fragment;
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static QuestionFragment newInstance(int columnCount) {
-        QuestionFragment fragment = new QuestionFragment();
+    public static CompletedFragment newInstance(int columnCount) {
+        CompletedFragment fragment = new CompletedFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -62,7 +65,7 @@ public class QuestionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_question_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_completed_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -73,7 +76,7 @@ public class QuestionFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyQuestionRecyclerViewAdapter(ConvoContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyCompletedRecyclerViewAdapter(ConvoContent.ITEMS, mListener));
         }
         return view;
     }
@@ -90,6 +93,7 @@ public class QuestionFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     /**
      * This interface must be implemented by activities that contain this
